@@ -1,0 +1,17 @@
+* {
+  font-family: "JetBrains Mono", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content-center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
