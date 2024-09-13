@@ -26,7 +26,7 @@ const Routers = () => {
     res && dispatch(addAuth(JSON.parse(res)));
   };
 
-  return isLoading ? <Spin/> : !auth.token ? <AuthRouter /> : <MainRouter />;
+  return isLoading ? <Spin /> : !auth.token ? <AuthRouter /> : <MainRouter />;
 };
 
 export default Routers;

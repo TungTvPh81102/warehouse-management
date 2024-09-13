@@ -30,7 +30,7 @@ const AuthRouter = () => {
         </div>
         <div className="col content-center">
           <Routes>
-            <Route path="/login" element={<Login />}></Route>
+            <Route path="/" element={<Login />}></Route>
             <Route path="/sign-up" element={<SignUp />}></Route>
           </Routes>
         </div>

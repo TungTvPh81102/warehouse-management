@@ -1,14 +1,20 @@
 import axios from "axios";
 import queryString from "query-string";
+import { localDataNames } from "../constants/appInfo";
 
 const axiosClient = axios.create({
   baseURL: "http://localhost:8080/api",
   paramsSerializer: (params) => queryString.stringify(params),
 });
 
+const getAccessToken = () => {
+  const res = localStorage.getItem(localDataNames.authData);
+  return res ? JSON.parse(res).token : null;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 axiosClient.interceptors.request.use(async (config: any) => {
-  const token = localStorage.getItem("token");
+  const token = getAccessToken();
 
   config.headers = {
     Authorization: token ? `Bearer ${token}` : "",
@@ -16,7 +22,7 @@ axiosClient.interceptors.request.use(async (config: any) => {
     ...config.headers,
   };
 
-  return config;
+  return { ...config, data: config.data ?? null };
 });
 
 axiosClient.interceptors.response.use(
